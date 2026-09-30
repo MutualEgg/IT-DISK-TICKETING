@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# .NET build files
+**/bin/
+**/obj/
+
+# Node
+**/node_modules/
+
+# Environment / local configuration
+.env
+.env.*
+!.env.example
+
+# Local HTTPS certificates
+**/*.pem
+
+# Local application settings
+**/appsettings.json
+**/appsettings.Development.json

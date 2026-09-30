@@ -1,0 +1,943 @@
+/* ===================================================
+   GLOBAL RESET & BASE
+   =================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1a1f36;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: #0f172a;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* ===================================================
+   BUTTONS
+   =================================================== */
+
+button {
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 11px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.1s ease;
+}
+
+button:hover:not(:disabled) {
+    background: #1d4ed8;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+button:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+}
+
+
+/* Back / Secondary Button */
+
+.back-button {
+    background: #ffffff;
+    color: #475569;
+    border: 1.5px solid #e2e8f0;
+    padding: 9px 18px;
+    font-size: 0.9rem;
+}
+
+.back-button:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #1e293b;
+    box-shadow: none;
+}
+
+
+/* Danger Button */
+
+.danger,
+.danger-button {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.danger:hover:not(:disabled),
+.danger-button:hover:not(:disabled) {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+
+/* Finish Button */
+
+.finish-button {
+    background: #15803d;
+}
+
+.finish-button:hover:not(:disabled) {
+    background: #166534;
+    box-shadow: 0 4px 12px rgba(21, 128, 61, 0.25);
+}
+
+
+/* ===================================================
+   GENERAL FORMS
+   =================================================== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #1a1f36;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    outline: none;
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #94a3b8;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+
+/* File Input */
+
+input[type="file"] {
+    padding: 10px 12px;
+    background: #f8fafc;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #475569;
+}
+
+input[type="file"]:hover {
+    border-color: #2563eb;
+    background: #f0f7ff;
+}
+
+
+/* Select Arrow */
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+
+/* ===================================================
+   AUTH PAGES
+   =================================================== */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 4px;
+}
+
+.auth-card .back-button {
+    align-self: center;
+}
+
+
+/* ===================================================
+   LANDING PAGE
+   =================================================== */
+
+.landing-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.landing-card {
+    background: #ffffff;
+    padding: 48px 44px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: 320px;
+}
+
+.landing-card h1 {
+    margin-bottom: 12px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.landing-card button {
+    width: 100%;
+    padding: 13px;
+}
+
+.landing-card button + button {
+    background: #ffffff;
+    color: #2563eb;
+    border: 1.5px solid #2563eb;
+    box-shadow: none;
+}
+
+.landing-card button + button:hover {
+    background: #f0f7ff;
+}
+
+
+/* ===================================================
+   NAVBAR
+   =================================================== */
+
+.navbar {
+    height: 64px;
+    width: 100%;
+    background: #0f172a;
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 32px;
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.navbar-item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: background 0.15s ease;
+}
+
+.navbar-item:hover {
+    background: #1e293b;
+}
+
+.navbar-dropdown {
+    position: relative;
+}
+
+
+/* Category Dropdown */
+
+.category-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+
+    width: 210px;
+
+    padding: 6px 0;
+
+    background: #ffffff;
+    color: #1f2937;
+
+    border-radius: 10px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
+}
+
+.category-option {
+    padding: 10px 15px;
+    font-size: 0.88rem;
+    cursor: pointer;
+
+    transition: background 0.15s ease;
+}
+
+.category-option:hover {
+    background: #f1f5f9;
+}
+
+
+/* ===================================================
+   USER MAIN PAGE
+   =================================================== */
+
+.main-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 32px;
+    gap: 16px;
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+}
+
+
+/* Sections */
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.05rem;
+    color: #475569;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+
+    border-bottom: 2px solid #e2e8f0;
+}
+
+
+/* ===================================================
+   DASHBOARD PAGES
+   =================================================== */
+
+.dashboard-page {
+    min-height: 100vh;
+}
+
+.dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.ticket-section {
+    margin-bottom: 48px;
+}
+
+.section-heading {
+    margin: 0 0 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* ===================================================
+   TICKET GRID
+   =================================================== */
+
+.ticket-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(280px, 1fr)
+    );
+    gap: 16px;
+}
+
+
+/* ===================================================
+   TICKET CARD
+   =================================================== */
+
+.ticket-card {
+    background: #ffffff;
+
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+
+    padding: 18px 20px;
+
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.ticket-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    transform: translateY(-2px);
+}
+
+.ticket-card h3 {
+    font-size: 1.05rem;
+    color: #0f172a;
+    margin-bottom: 6px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ticket-card p {
+    font-size: 0.88rem;
+    color: #64748b;
+    margin: 0;
+}
+
+
+/* ===================================================
+   EMPTY STATE
+   =================================================== */
+
+.empty-state {
+    padding: 32px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    background: #ffffff;
+
+    border: 1.5px dashed #e2e8f0;
+    border-radius: 12px;
+
+    font-size: 0.95rem;
+}
+
+
+/* ===================================================
+   FORM PAGE
+   =================================================== */
+
+.form-page {
+    min-height: calc(100vh - 64px);
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px 20px;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.form-card h1 {
+    margin: 0 0 28px;
+    font-size: 1.6rem;
+}
+
+.ticket-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.ticket-form input[type="text"],
+.ticket-form input[type="email"],
+.ticket-form input[type="password"],
+.ticket-form select,
+.ticket-form textarea {
+    width: 100%;
+}
+
+.ticket-form input[type="text"]:focus,
+.ticket-form input[type="email"]:focus,
+.ticket-form input[type="password"]:focus,
+.ticket-form select:focus,
+.ticket-form textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.ticket-form button {
+    margin-top: 4px;
+}
+
+
+/* ===================================================
+   FORM ACTIONS
+   =================================================== */
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+
+/* ===================================================
+   MODAL
+   =================================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(15, 23, 42, 0.55);
+
+    backdrop-filter: blur(4px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+
+    padding: 20px;
+
+    animation: fadeIn 0.15s ease;
+}
+
+.modal-box {
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    padding: 32px;
+
+    max-width: 520px;
+    width: 100%;
+
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+
+    animation: slideUp 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===================================================
+   TICKET DETAIL PAGE
+   =================================================== */
+
+.ticket-detail-page {
+    max-width: 800px;
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding: 32px 24px 120px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.loading {
+    text-align: center;
+
+    padding: 60px 20px;
+
+    color: #94a3b8;
+
+    font-size: 1rem;
+}
+
+
+/* ===================================================
+   TICKET MESSAGE WRAPPER
+   =================================================== */
+
+.ticket-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* ===================================================
+   CHAT
+   =================================================== */
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 20px;
+
+    min-height: 250px;
+    max-height: 55vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.message {
+    max-width: 70%;
+
+    padding: 10px 14px;
+
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    font-size: 0.95rem;
+
+    word-wrap: break-word;
+
+    animation: msgIn 0.15s ease;
+}
+
+.message p {
+    margin: 0;
+    color: inherit;
+}
+
+.message small {
+    font-size: 0.72rem;
+    opacity: 0.7;
+}
+
+.message.left {
+    align-self: flex-start;
+
+    background: #f1f5f9;
+    color: #1e293b;
+
+    border-bottom-left-radius: 4px;
+}
+
+.message.right {
+    align-self: flex-end;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    border-bottom-right-radius: 4px;
+}
+
+@keyframes msgIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ===================================================
+   MESSAGE INPUT BAR
+   =================================================== */
+
+.message-bar {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px;
+
+    background: #ffffff;
+
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.message-bar input[type="text"] {
+    flex: 1;
+}
+
+.message-bar button {
+    white-space: nowrap;
+}
+
+
+/* ===================================================
+   BACK BUTTON AREA
+   =================================================== */
+
+.back-button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+
+/* ===================================================
+   RESPONSIVE
+   =================================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .navbar-item {
+        padding: 8px 9px;
+        font-size: 0.8rem;
+    }
+
+    .main-page {
+        padding: 20px 16px 48px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-content {
+        padding: 28px 16px;
+    }
+
+    .section-heading {
+        font-size: 1.3rem;
+    }
+
+    .ticket-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-page {
+        padding: 24px 16px;
+    }
+
+    .form-card {
+        padding: 24px 18px;
+    }
+
+    .auth-card {
+        padding: 32px 24px;
+    }
+
+    .landing-card {
+        width: 100%;
+        min-width: 0;
+        padding: 40px 28px;
+    }
+
+    .modal-box {
+        padding: 24px 20px;
+    }
+
+    .ticket-detail-page {
+        padding: 20px 16px 100px;
+    }
+
+    .message {
+        max-width: 85%;
+    }
+
+    .message-bar {
+        flex-wrap: wrap;
+    }
+
+    .message-bar input[type="text"] {
+        flex-basis: 100%;
+    }
+
+    .message-bar button {
+        flex: 1;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    .form-actions button {
+        flex: 1;
+    }
+}
+
+.ticket-card {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background-color: #e53935;
+  color: white;
+
+  font-size: 12px;
+  font-weight: bold;
+}
